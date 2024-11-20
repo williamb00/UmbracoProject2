@@ -1,0 +1,71 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    // Layout för sidan
+    Layout = "mainLayout.cshtml";
+
+    // Hämta bild-URLs för risk management sektionen
+    var riskManagementImage2 = Model?.Value<IPublishedContent>("riskManagementImage2")?.Url() ?? "default-signature-url";
+    var riskManagementImage = Model?.Value<IPublishedContent>("riskManagementImage")?.Url() ?? "default-signature-url";
+    var riskManagementImage3 = Model?.Value<IPublishedContent>("riskManagementImage3")?.Url() ?? "default-signature-url";
+}
+
+<!-- Sektion för Risk Management -->
+<section class="page-top bg-gray">
+    <h1>Risk Management</h1>
+    <div class="breadcrumbs">
+        <a href="/">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a href="/our-services">Services</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a class="active" href="#">Risk Management</a>
+    </div>
+</section>
+
+<!-- Huvudsektion för artikeln -->
+<section class="article">
+    <div class="container">
+        <!-- Sidofält för information -->
+        <aside class="sidebar">
+            <h5>About us</h5>
+            <img src="@riskManagementImage2" alt="Team working together">
+            <p class="about-us-text">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <form class="support-box bg-primary" method="get" novalidate>
+                <h5>How can we help you?</h5>
+                <p class="support-text">Online support 24/7, we're here to assist you.</p>
+                <div class="input-container">
+                    <input type="email" id="email" name="email" placeholder="E-mail address">
+                    <button class="btn"><i class="fa-regular fa-envelope"></i></button>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Artikeldel -->
+        <div class="article-container">
+            <img src="@riskManagementImage" alt="Team collaboration">
+            <h4>Key Insights</h4>
+            <ul>
+                <li>Financial planning helps individuals meet their present and future financial needs.</li>
+                <li>Investment strategies should align with both short-term and long-term goals.</li>
+                <li>Understanding the impact of market fluctuations is key to sound financial planning.</li>
+            </ul>
+            <h4>A Financial Plan is Built on Strong Relationships</h4>
+            <p>No matter your current financial situation, working with a trusted advisor can help guide you toward your goals.</p>
+            <p>The financial planning journey begins with an in-depth understanding of your personal values, goals, and aspirations.</p>
+            <p>Our approach is based on forming a long-lasting relationship that evolves as your needs and goals change over time.</p>
+            <p>Key steps in our process include listening carefully to your needs, analyzing your current financial position, and understanding your priorities regarding money management.</p>
+            <p>We provide personalized advice to help you navigate your unique financial journey.</p>
+            <img class="img-margin" src="@riskManagementImage3" alt="Advisors working with clients">
+            <h4>Achieving Financial Confidence Together</h4>
+            <p>Collaborating with a financial advisor can provide peace of mind by helping you achieve the following goals:</p>
+            <ul>
+                <li>Ensure financial security for life's essentials.</li>
+                <li>Maintain the lifestyle you desire, both now and in the future.</li>
+                <li>Prepare for unexpected events that could impact your financial stability.</li>
+                <li>Leave a lasting legacy to the people and causes that matter most to you.</li>
+            </ul>
+        </div>
+    </div>
+</section>

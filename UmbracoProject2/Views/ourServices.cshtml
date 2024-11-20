@@ -1,0 +1,31 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    // Set the layout for the page
+    Layout = "mainLayout.cshtml";
+}
+
+<!-- Page header and breadcrumbs -->
+<section class="page-top bg-gray">
+    <h1>Our Services</h1>
+    <div class="breadcrumbs">
+        <!-- Breadcrumbs for navigation -->
+        <a href="/">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a class="active" href="#">Services</a>
+    </div>
+</section>
+
+<!-- Our services section: Includes a partial view -->
+@await Html.PartialAsync("components/services")
+
+<!-- Pagination controls -->
+<div class="pagination">
+    <button class="btn prev-next none">Prev</button>
+    <button class="btn number active">1</button>
+    <button class="btn number">2</button>
+    <button class="btn prev-next">Next</button>
+</div>
+
+<!-- Contact information section: Includes a partial view -->
+@await Html.PartialAsync("components/contactinfo")

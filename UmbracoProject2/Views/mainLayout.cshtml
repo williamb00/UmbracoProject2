@@ -1,0 +1,45 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	// Define the page title, appending a default site name if no title is provided in ViewBag
+	Layout = null;
+	var pageTitle = !string.IsNullOrEmpty(ViewBag.Title) ? $"{ViewBag.Title} | Onatrix - Financial Solution For Your Business" : "Onatrix - Financial Solution For Your Business";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- Set the viewport for responsive design -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Font Awesome for icons -->
+	<link rel="stylesheet" href="https://kit.fontawesome.com/a576612222.css" crossorigin="anonymous">
+
+	<!-- Link to custom main CSS file -->
+	<link rel="stylesheet" href="/css/main.css">
+	<!-- Title dynamically set based on the ViewBag title -->
+	<title>@pageTitle</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- Header section with included components -->
+		<header>
+			@await Html.PartialAsync("components/Header")
+			@await Html.PartialAsync("components/Navbar")
+		</header>
+
+		<!-- Main content section -->
+		<main>
+			@RenderBody() <!-- Render the body content of the page -->
+		</main>
+
+		<!-- Footer section -->
+		<footer>@await Html.PartialAsync("components/footer")</footer>
+	</div>
+
+	<!-- Link to custom JavaScript file -->
+	<script src="/script/main.js"></script>
+</body>
+</html>

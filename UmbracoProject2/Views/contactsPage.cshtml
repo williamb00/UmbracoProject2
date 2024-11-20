@@ -1,0 +1,61 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "mainLayout.cshtml";
+
+    // Hämtar bild-URL för kontaktkarta med standardvärde
+    var contactsImagemap = Model?.Value<IPublishedContent>("contactsImagemap")?.Url() ?? "default-image-url";
+
+    // Samlar in textvärden från modellen för kontaktformuläret
+    var contactInfo = new {
+        Contact01 = Model?.Value<string>("contact01"),
+        Contact02 = Model?.Value<string>("contact02"),
+        Contact03 = Model?.Value<string>("contact03"),
+        Contact04 = Model?.Value<string>("contact04"),
+        Contact05 = Model?.Value<string>("contact05")
+    };
+}
+
+<!-------Bannersektion-------->
+<section class="page-top bg-gray">
+    <h1>Contact Us</h1>
+    <div class="breadcrumbs">
+        <a href="/">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a class="active" href="#">Contact</a>
+    </div>
+</section>
+
+<!-------Partial för kontaktinformation-------->
+@await Html.PartialAsync("components/contactinfo") 
+
+<!-------Kartsektion med bild och overlay-------->
+<section class="map">
+    <div class="img-container">
+        <img src="@contactsImagemap" alt="Map">
+        <div class="overlay"></div>
+    </div>
+</section>
+
+<!-------Kontaktformulärsektion-------->
+<section class="contact-form">
+    <div class="container bg-light">
+        <h6>@contactInfo.Contact01</h6> <!-- Första rubriken från modellen -->
+        <h2>@contactInfo.Contact02</h2> <!-- Andra rubriken från modellen -->
+        <p>@contactInfo.Contact03</p> <!-- Beskrivande text från modellen -->
+        <form method="get" novalidate>
+            <div class="grid">
+                <input type="text" id="name" name="name" placeholder="Name">
+                <input type="email" id="email" name="email" placeholder="Email address">
+                <input type="text" id="phone" name="phone" placeholder="Phone">
+                <select name="service" id="service">
+                    <option value="1">@contactInfo.Contact04</option> <!-- Dropdown-option från modellen -->
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">@contactInfo.Contact05</button> <!-- Submit-knapptext från modellen -->
+        </form>
+    </div>
+</section>
+
+<!-------Partial för partnersektion-------->
+@await Html.PartialAsync("components/partners")
